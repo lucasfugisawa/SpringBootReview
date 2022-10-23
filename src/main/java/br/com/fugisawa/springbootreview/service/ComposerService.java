@@ -5,6 +5,7 @@ import br.com.fugisawa.springbootreview.exception.rest.client.NotFoundException;
 import br.com.fugisawa.springbootreview.repository.ComposerRepository;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 
@@ -27,6 +28,7 @@ public class ComposerService {
                 .orElseThrow(() -> new NotFoundException("Composer not found: " + id));
     }
 
+    @Transactional
     public Composer save(Composer composer) {
         return composerRepository.save(composer);
     }
