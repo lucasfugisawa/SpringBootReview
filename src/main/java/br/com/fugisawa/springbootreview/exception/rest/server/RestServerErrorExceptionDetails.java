@@ -1,16 +1,11 @@
 package br.com.fugisawa.springbootreview.exception.rest.server;
 
-import lombok.Builder;
-import lombok.Data;
+import br.com.fugisawa.springbootreview.exception.rest.RestErrorExceptionDetails;
+import lombok.Getter;
+import lombok.experimental.SuperBuilder;
 
-import java.time.LocalDateTime;
+@Getter
+@SuperBuilder
+public class RestServerErrorExceptionDetails extends RestErrorExceptionDetails {
 
-@Data
-@Builder
-public class RestServerErrorExceptionDetails {
-    private String uuid;
-    private LocalDateTime timestamp;
-    private Integer status;
-    private String message;
-    private String details;
 }

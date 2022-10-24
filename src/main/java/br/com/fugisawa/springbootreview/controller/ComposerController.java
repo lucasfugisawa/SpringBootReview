@@ -10,6 +10,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import javax.validation.Valid;
 import java.util.List;
 
 @RestController
@@ -35,7 +36,7 @@ public class ComposerController {
     }
 
     @PostMapping
-    public ResponseEntity<Composer> save(@RequestBody ComposerPostRequestBody composer) {
+    public ResponseEntity<Composer> save(@RequestBody @Valid ComposerPostRequestBody composer) {
         Composer comp = ComposerMapper.INSTANCE.toComposer(composer);
         Composer savedComposer = composerService.save(comp);
         return new ResponseEntity<>(savedComposer, HttpStatus.CREATED);
@@ -48,7 +49,7 @@ public class ComposerController {
     }
 
     @PutMapping
-    public ResponseEntity<Void> replace(@RequestBody ComposerPutRequestBody composer) {
+    public ResponseEntity<Void> replace(@RequestBody @Valid ComposerPutRequestBody composer) {
         Composer comp = ComposerMapper.INSTANCE.toComposer(composer);
         composerService.replace(comp);
         return new ResponseEntity<>(HttpStatus.NO_CONTENT);
